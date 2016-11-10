@@ -1,0 +1,103 @@
+{
+	"mappings": 
+	[
+		{
+			"name": "Boston Food Establishment Inspections"
+		  , "source": "https://data.cityofboston.gov/Health/Food-Establishment-Inspections/qndu-wx8w"
+		  , "file": "Food_Establishment_Inspections.csv"
+		  , "mapping": 
+			{
+				"businessName": "BusinessName"
+			  , "violation": "Violation"
+			  , "description": "ViolDesc"
+			  , "comment": "Comments"
+			  , "date":
+				{
+					"from": "VIOLDTTM"
+				  , "re":"([0-9]{2}\\/[0-9]{2}\\/[0-9]{4}) [0-9]{2}:[0-9]{2}:[0-9]{2} (A|P)M"
+				  , "exec": "$1"
+				}
+			  , "result":"ViolStatus"
+			  , "risk": 
+				{
+					"from": "ViolLevel"
+				  , "re":"$.+^"
+				  , "exec": "len($0) - 1"
+				}
+			  , "address" : "Address"
+			  , "city": "City"
+			  , "state": "State"
+			  , "latitude": 
+				{
+					"from": "Location"
+				  , "re":"$\\(([-0-9]+\\.[0-9]+), ([-0-9]+\\.[0-9]+)\\)^"
+				  , "exec": "$1"
+				}
+			  , "longitude":
+				{
+					"from": "Location"
+				  , "re":"$\\(([-0-9]+\\.[0-9]+), ([-0-9]+\\.[0-9]+)\\)^"
+				  , "exec": "$2"
+				}
+			}
+		}
+	  , {
+			"name": "Chicago Food Inspections"
+		  , "source": "https://data.cityofchicago.org/Health-Human-Services/Food-Inspections/4ijn-s7e"
+		  , "file": "Food_Inspections.csv"
+		  , "mapping": 
+			{
+			  "violation": 
+				{
+					"from": "Violations"
+				  , "each": 
+					{
+						"re":"([^|]+) | "
+					  , "match": "$1"
+					}
+				  , "re": "([0-9]+)\\. (.+?(?= - Comments:)) - Comments: ([^|]+)"
+				  , "exec": "$1"
+				  , "then": "description"
+				}
+			  , "description":
+				{
+					"exec": "$2"
+				  , "then": "comment"
+				}
+			  , "comment": 
+			    {
+					"exec": "$3"
+				}
+			  , "businessName": "DBA Name"
+			  , "date": "Inspection Date"
+			  , "result": "Results"
+			  , "risk": 
+				{
+					"from": "Risk"
+				  , "re":"$Risk ([0-9]) \\([a-zA-Z]\\)|(All)^"
+				  , "exec": "3 - int($1) if $1 != '' else 3"
+				}
+			  , "address" : "Address"
+			  , "city": "City"
+			  , "state": "State"
+			  , "latitude": "Latitude"
+			  , "longitude": "Longitude"
+			}
+		}
+	]
+  , "fields" : 
+	[
+		"businessName"
+	  , "violation"
+	  , "description"
+	  , "comment"
+	  , "date"
+	  , "result"
+	  , "risk" 
+	  , "address"
+	  , "city"
+	  , "state"
+	  , "latitude"
+	  , "longitude"
+	]
+}
