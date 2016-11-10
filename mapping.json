@@ -3,7 +3,9 @@
 	[
 		{
 			"name": "Boston Food Establishment Inspections"
-		  , "source": "https://data.cityofboston.gov/Health/Food-Establishment-Inspections/qndu-wx8w"
+		  , "source": "https://data.cityofboston.gov/api/views/qndu-wx8w/rows.csv?accessType=DOWNLOAD"
+		  , "size" : "45092864"
+		  , "checksum": "d0a8a9afe5db0ea5dce46a7300ab9490"
 		  , "file": "Food_Establishment_Inspections.csv"
 		  , "mapping": 
 			{
@@ -43,7 +45,9 @@
 		}
 	  , {
 			"name": "Chicago Food Inspections"
-		  , "source": "https://data.cityofchicago.org/Health-Human-Services/Food-Inspections/4ijn-s7e"
+		  , "source": "https://data.cityofchicago.org/api/views/4ijn-s7e5/rows.csv?accessType=DOWNLOAD"
+		  , "size": "39298048"
+		  , "checksum": "7a405b28450c1c46c2015f3237252bde"
 		  , "file": "Food_Inspections.csv"
 		  , "mapping": 
 			{
