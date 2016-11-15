@@ -7,4 +7,4 @@ parser.add_argument('col', metavar='C', help='column to count values')
 args = parser.parse_args()
 
 data = pandas.read_csv(args.file)
-print data[args.col].value_counts()
+print(data[args.col].value_counts())
