@@ -40,11 +40,11 @@ class Converter:
             output["result"] = input["ViolStatus"]
             output["risk"] = map(lambda x: ["Low", "Medium", "High", "High"][len(str(x)) - 1], input["ViolLevel"])
             output["address"] = input["Address"]
-            output["city"] = input["City"]
-            output["state"] = input["State"]
+            output["city"] = map(lambda x: x.lower().title() if type(x) is str else "", input["City"])
+            output["state"] = map(lambda x: x.upper() if type(x) is str else "", input["State"])
             exp = r"\(([-0-9]+\.[0-9]+), ([-0-9]+\.[0-9]+)\)"
-            output["latitude"] = map(lambda x: self.get_group(exp, x, 1), input["Location"])
             output["longitude"] = map(lambda x: self.get_group(exp, x, 2), input["Location"])
+            output["latitude"] = map(lambda x: self.get_group(exp, x, 1), input["Location"])
 
             ### Cleaning
 
@@ -77,10 +77,10 @@ class Converter:
                 if type(viol) is not str:
                     continue
                 for m in viol.split("|"):
-                    exp = r"([0-9]+)\. (.+?(?= - Comments:)) - Comments: *([^|]+)"
-                    output["violation"].append(self.get_group(exp, viol, 1))
-                    output["description"].append(self.get_group(exp, viol, 2))
-                    output["comment"].append(self.get_group(exp, viol, 3))
+                    exp = r"([0-9]+)\. (.+?(?= - Comments:)) - Comments: *([^|]+)*"
+                    output["violation"].append(self.get_group(exp, m, 1))
+                    output["description"].append(self.get_group(exp, m, 2))
+                    output["comment"].append(self.get_group(exp, m, 3))
                     output["businessName"].append(input["DBA Name"][i])
                     output["date"].append(input["Inspection Date"][i])
                     output["result"].append(input["Results"][i])
@@ -88,8 +88,10 @@ class Converter:
                     risk = self.get_group(exp, input["Risk"][i], 2)
                     output["risk"].append(risk if risk else "High")
                     output["address"].append(input["Address"][i])
-                    output["city"].append(input["City"][i])
-                    output["state"].append(input["State"][i])
+                    x = input["City"][i]
+                    output["city"].append(x.lower().title() if type(x) is str else "")
+                    x = input["State"][i]
+                    output["state"].append(x.upper() if type(x) is str else "")
                     output["latitude"].append(input["Latitude"][i])
                     output["longitude"].append(input["Longitude"][i])
 

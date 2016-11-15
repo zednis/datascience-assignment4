@@ -47,7 +47,7 @@
 			"name": "Chicago Food Inspections"
 		  , "source": "https://data.cityofchicago.org/api/views/4ijn-s7e5/rows.csv?accessType=DOWNLOAD"
 		  , "size": "39298048"
-		  , "checksum": "7a405b28450c1c46c2015f3237252bde"
+		  , "checksum": "343f512efd5de24324a10bcaef4b8ab5"
 		  , "file": "Food_Inspections.csv"
 		  , "mapping": 
 			{
