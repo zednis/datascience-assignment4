@@ -38,3 +38,5 @@ To start the jupyter notebook web app do the following after installing jupyter 
 ```
 $ jupyter notebook
 ```
+
+To run the comment_analysis.R script, you will need to install the necessary packages that are being loaded by the script. The easiest way to execute the script is by installing RStudio (https://www.rstudio.com/), opening the script in RStudio and running it from there.
