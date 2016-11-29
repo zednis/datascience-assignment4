@@ -1,3 +1,6 @@
+# Created by Arijit Deb
+# Comment Analysis for the Food inspection data
+
 getwd()
 setwd("E:/RPI/DS 2016/Assignments/Project/")
 list.files()
