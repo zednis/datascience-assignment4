@@ -45,7 +45,7 @@ summary(df.chi)
 # create dataframe from comments & result of boston data
 comments.bos <- df.bos[, c("comment", "result")]
 comments.bos$comment <- as.character(comments.bos$comment)
-comments.bos <- comments.bos[(comments.bos$result==""), ]
+# comments.bos <- comments.bos[(comments.bos$result==""), ]
 sum(comments.bos$comment=="") # 19718 empty comments. dropping these in next line
 comments.bos <- comments.bos[!(comments.bos$comment == ""), ]
 
