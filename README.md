@@ -1,3 +1,16 @@
+# Data
+
+Source and Converted datasets are available under the [CC 1.0 Universal License](https://creativecommons.org/publicdomain/zero/1.0/)
+
+| Dataset Title  | Download Link |
+| ------------- | ------------- |
+| Boston Food Establishment Inspections (source) | [Food_Establishment_Inspections.csv](https://drive.google.com/open?id=0B9UzvS6jW-Iga1hQdjYwLWI0aVE) |
+| Boston Food Establishment Inspections (converted) | [Food_Establishment_Inspections_(converted).csv](https://drive.google.com/open?id=0B9UzvS6jW-IgTy0yRnptX3dfdjg) |
+| Chicago Food Inspections (source) | [Food_Inspections.csv](https://drive.google.com/open?id=0B9UzvS6jW-IgZWowOUM2X3ctUG8) |
+| Chicago Food Inspections (converted) | [Food_Inspections_(converted).csv](https://drive.google.com/open?id=0B9UzvS6jW-IgLTdIWld1dDlMa2c) |
+
+# Running Transformation and Analysis Scripts
+
 Before running:
 
 Install python3
